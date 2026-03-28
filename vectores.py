@@ -1,11 +1,20 @@
 import numpy as np
 
-a = np.array([1, 2, 3])
-b = np.array([4, 0, -1])
+# Corrección del diagnóstico
+I = np.array([[1, 0],
+              [0, 1]])
+B = np.array([[5, 3],
+              [2, 7]])
 
-# Producto punto — tres formas de calcularlo, todas dan lo mismo
-print(np.dot(a, b))       # forma estándar
-print(a @ b)              # operador @ — el más usado en ML
-print(sum(a[i]*b[i] for i in range(len(a))))  # manual, para entender
+print("I × B =\n", I @ B)   # debe dar exactamente B
 
-# Resultado: 1*4 + 2*0 + 3*(-1) = 4 + 0 - 3 = 1
+# Transformación de escala
+A = np.array([[2, 0],
+              [0, 2]])
+v = np.array([3, 1])
+print("\nEscala × v =", A @ v)   # [6, 2]
+
+# Rotación 90°
+R = np.array([[0, -1],
+              [1,  0]])
+print("Rotar v =", R @ v)   # [-1, 3]
